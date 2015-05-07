@@ -1,4 +1,4 @@
-function [ w ] = bisection(a,b,eps,imax)
+function [ w, iter ] = bisection(a,b,eps,imax)
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
     iter = 1;
