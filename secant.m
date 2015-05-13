@@ -1,24 +1,18 @@
-function [ xnn, iter ] = secant( a, b, eps, imax )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
-    iter = 0;
-    if(f(a)*f(b)>0)
+function [ x, y ] = secant( xnp, xn, imax )
+    %sprawdzamy obszar izolacji
+    if(f(xnp)*f(xn)>0)
         error('Brak obszaru izolacji');
     end
-    
-    xnp = a;
-    xn = b;
-    xnn = (xnp*f(xn) - xn*f(xnp))/ (f(xn) - f(xnp));
-    
-    while(abs(f(xnn)) > eps)
-        if(iter>=imax)
-            error('osiagnieto imax');
-        end
+    for i = 1:imax+1
+        %obliczamy wartoœæ kolenego przybli¿enie miejsca zerowego
+        xnn = (xnp*f(xn) - xn*f(xnp))/ (f(xn) - f(xnp));
+        x(i) = xnn;
+        y(i) = f(xnn);
+        %Przechodzimy do kolejnego przedzia³u
         xnp = xn;
         xn = xnn;
-        xnn = (xnp*f(xn) - xn*f(xnp))/ (f(xn) - f(xnp));
-        iter = iter+1;
     end
-    
+    x = x';
+    y = y';
 end
 

@@ -1,15 +1,11 @@
-function [ xn, iter ] = newton( a, eps, imax )
-%UNTITLED6 Summary of this function goes here
-%   Detailed explanation goes here
-    iter = 0;
-    xn = a;
-    while(abs(f2(xn))>eps)
+function [ x, y ] = newton( xn, imax )
+    for i = 1:imax
+        %obliczamy kolejne przybli¿enie miejsca zerowego
         xn = xn - (f2(xn))/(f2p(xn));
-        if(iter>imax)
-            error('osiagnieto imax')
-        end
-        iter = iter +1;
+        x(i) = xn;
+        y(i) = f2(xn);
     end
-
+    x=x';
+    y=y';
 end
 
