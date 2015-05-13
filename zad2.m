@@ -28,7 +28,7 @@ ix = 1;
     iy = 2;
 for j = -4:3
      
-        [m1(:,ix), m1(:,iy) ]= mm1(j-2,j-1,j,10);
+        [m1(:,ix), m1(:,iy) ]= mm1(j-1,j+1,j,10);
         ix = ix+2;
     iy = iy+2;
 end
